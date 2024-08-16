@@ -2,6 +2,7 @@ const express = require('express')
 const favicon =require('serve-favicon')
 const bodyParser =require('body-parser')
 const sequelize = require('./src/db/sequelize')
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 const app =express()
 const port = process.env.PORT || 3000

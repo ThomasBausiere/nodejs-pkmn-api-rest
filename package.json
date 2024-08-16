@@ -4,14 +4,15 @@
   "description": "an awesome API rest to handle some pokemons",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development nodemon app.js"
+    "start": "cross-env NODE_ENV=production node app.js",
+    "dev": "cross-env NODE_ENV=development nodemon app.js"
   },
   "author": "Maz",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "cross-env": "^7.0.3",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mariadb": "^3.3.1",
