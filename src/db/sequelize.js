@@ -7,7 +7,7 @@ const pokemons = require('./mock-pokemon')
 let sequelize
 
 if(process.env.NODE_ENV === 'production') {
-  sequelize = new Sequelize('	lfcw08mfxg7kldqr', 'dw09cc7d0hj05a9v', 'n45qumvox7rjutt0', {
+  sequelize = new Sequelize('lfcw08mfxg7kldqr', 'dw09cc7d0hj05a9v', 'n45qumvox7rjutt0', {
     host: 'dcrhg4kh56j13bnu.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     dialect: 'mariadb',
     dialectOptions: {
