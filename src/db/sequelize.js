@@ -8,7 +8,7 @@ let sequelize
 
 if(process.env.NODE_ENV === 'production') {
   sequelize = new Sequelize('l2gay867tz0y6uq0', 'fykiy9zf9w2we1iq', 'k9pz2jv1rckpvp0r', {
-    host: '	eporqep6b4b8ql12.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    host: 'eporqep6b4b8ql12.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
     dialect: 'mariadb',
     dialectOptions: {
       timezone: 'Etc/GMT-2',
