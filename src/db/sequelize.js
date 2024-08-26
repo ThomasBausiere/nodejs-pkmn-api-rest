@@ -33,22 +33,37 @@ const User = UserModel(sequelize, DataTypes)
 const initDb = () => {
   return sequelize.sync().then(_ => {
     pokemons.map(pokemon => {
-      Pokemon.create({
-        name: pokemon.name,
-        hp: pokemon.hp,
-        cp: pokemon.cp,
-        picture: pokemon.picture,
-        types: pokemon.types
-      })
-      .then(pokemon => console.log(pokemon.toJSON()))
-    })
+      Pokemon.findOne({ where: { name: pokemon.name } })
+        .then(existingPokemon => {
+          if (!existingPokemon) {
+            return Pokemon.create({
+              name: pokemon.name,
+              hp: pokemon.hp,
+              cp: pokemon.cp,
+              picture: pokemon.picture,
+              types: pokemon.types
+            }).then(pokemon => console.log(pokemon.toJSON()));
+          } else {
+            console.log(`${pokemon.name} existe déjà.`);
+          }
+        });
+    });
 
     bcrypt.hash('pikachu', 10)
-    .then(hash => User.create({ username: 'pikachu', password: hash }))
-    .then(user => console.log(user.toJSON()))
+      .then(hash => User.findOrCreate({
+        where: { username: 'pikachu' },
+        defaults: { password: hash }
+      }))
+      .then(([user, created]) => {
+        if (created) {
+          console.log(user.toJSON());
+        } else {
+          console.log('Utilisateur "pikachu" existe déjà.');
+        }
+      });
 
-    console.log('La base de donnée a bien été initialisée !')
-  })
+    console.log('La base de donnée a bien été initialisée !');
+  });
 }
 
 module.exports = { 
